@@ -5,13 +5,12 @@ const customDictionary = {
   teh: "the",
   wrok: "work",
   fot: "for",
-  exampl: "example",
+  exampl: "example"
 };
 
 const getCorrection = (text) => {
   const words = text.match(/\b\w+\b/g);
   if (!words) return null;
-
   for (let w of words) {
     const word = w.toLowerCase();
     if (customDictionary[word]) {
@@ -24,6 +23,7 @@ const getCorrection = (text) => {
 const XSpellCheck = () => {
   const [input, setInput] = useState("");
   const correction = input.trim() ? getCorrection(input) : null;
+
   return (
     <div className="spellcheck-main">
       <h1 className="spellcheck-heading">Spell Check and Auto-Correction</h1>
@@ -35,7 +35,7 @@ const XSpellCheck = () => {
       />
       {correction && (
         <div className="spellcheck-suggestion">
-          Did you mean: <b>{correction}</b>{" "}
+          Did you mean: <b>{correction}</b>?
         </div>
       )}
     </div>
